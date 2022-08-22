@@ -2,12 +2,17 @@
 
 ## Install Maven
 ```sh
+cd /opt/
 yum install wget
-wget https://mirror.lyrahosting.com/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
-tar -xvzf apache-maven-3.8.1-bin.tar.gz
-export M2_HOME=/opt/apache-maven-3.8.1
-export M2=$M2_HOME/bin
-PATH=$PATH:$M2
+wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+# >>> Download the latest maven @ https://maven.apache.org/download.cgi
+tar -xvzf apache-maven-3.8.6-bin.tar.gz
+
+1. cd .. OR ~ (home)
+2. vim .bash_profile
+ >> export M2_HOME=/opt/apache-maven-3.8.6
+ >> export M2=$M2_HOME/bin
+ >> PATH=$PATH:$M2
 # To set it permanently update your .bash_profile
 source ~/.bash_profile
 
@@ -16,16 +21,14 @@ source ~/.bash_profile
 mvn version
 ```
 
-## Install git
+## Install git *(It is needed for Jenkins Pipeline purpose)*
 ```sh
 yum install git
-
-
 ```
 
 ## Assign shell to jenkins user
 
 ```sh
 vi /etc/passwd
-change shell from /bin/false to /bin/bash
+change shell from /bin/false to /bin/bash under Jenkins
 ```
