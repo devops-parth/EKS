@@ -4,7 +4,7 @@ EKS CI/CD Pipeline using Jenkins, Docker, Helm, Kubernetes etc.
 1. Launch EC2 :
 	* **t2.medium**
 	* Amazon Linux *(my case)*
-	* Security Group: Inbound Rule= TCP port 8080
+	* Security Group: Inbound Rule= TCP port 22, 8080
 2. Terminal
 	* sudo su -
 	* Install OpenJDK 1.8
@@ -16,3 +16,8 @@ EKS CI/CD Pipeline using Jenkins, Docker, Helm, Kubernetes etc.
 	* Login to Jenkins:8080 and cat the Password
     * [Maven and Git Installation](https://github.com/devops-parth/EKS/blob/master/Maven_Git.MD)
 	* Install Maven >> ls -ltra >> .bash_profile >> $M2
+	* [Docker Installation](https://github.com/devops-parth/EKS/blob/master/Docker.MD)
+3. Create EKS Cluster
+	* **t2.micro**
+	* Amazon Linux *(my case)*
+	* Security Group: Inbound Rule= TCP port 22
