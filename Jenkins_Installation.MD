@@ -95,3 +95,8 @@ http://YOUR-SERVER-PUBLIC-IP:8080
 1. Save your job 
 1. Build job
 1. Check "console output"
+
+
+## Manage Plugins:
+- Docker Pipeline
+- Maven Integration
