@@ -16,10 +16,13 @@ yum install java-1.8*
 Lets install java and set the java home
 ```sh
 java -version
-find /usr/lib/jvm/java-1.8* | head -n 3
-#JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
-export JAVA_HOME
-PATH=$PATH:$JAVA_HOME
+find /usr/lib/jvm/java-1.8* | head -n 3   #based on location displayed by above command
+
+1. ls -ltra
+2. vi .bash_profile
+ >> JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64  #Exact path based on find command
+ >> export JAVA_HOME
+ >> PATH=$PATH:$JAVA_HOME   #PATH=$PATH:$HOME/bin:$JAVA_HOME
 # To set it permanently update your .bash_profile
 source ~/.bash_profile
 ```
