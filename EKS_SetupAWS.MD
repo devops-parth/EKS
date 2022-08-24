@@ -12,6 +12,7 @@ You can follow same procedure in the official  AWS document [Getting started wit
     c. Move kubectl onto /usr/local/bin  *#This loacation is only for RHEL & centOS for UBUNTU, /local/bin*
     d. Test that your kubectl installation was successful    
    ```sh 
+   sudo su -
    curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
    chmod +x ./kubectl
    mv ./kubectl /usr/local/bin   #This loacation is only for RHEL & centOS for UBUNTU, /local/bin
@@ -43,12 +44,13 @@ You can follow same procedure in the official  AWS document [Getting started wit
    --node-type instance-type \
    --nodes-min 2 \
    --nodes-max 2 \ 
-   --zones <AZ-1>,<AZ-2>
+   --zones <AZ-1>,<AZ-2>   #e.g. in ap-south-1c, t2.medium is not available, in such case we need to mention zones
    
+   >>Create EKS Cluster in the same Zone that of Kubernetes Management Host (EC2)
    example:
    eksctl create cluster --name cloudfreak-cluster \
       --region ap-south-1 \
-   --node-type t2.medium \
+   --node-type t2.medium
     ```
 
 5. To delete the EKS clsuter 
@@ -59,5 +61,6 @@ You can follow same procedure in the official  AWS document [Getting started wit
 6. Validate your cluster using by creating by checking nodes and by creating a pod 
    ```sh 
    kubectl get nodes
+   kubectl get pods -n kube-system
    kubectl run pod tomcat --image=tomcat 
    ```
