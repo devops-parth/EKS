@@ -25,8 +25,8 @@ Goto Kubernetes Management Server
 
 ## Copy config file from EKS Management host to Jenkins home directory
 ```sh
-mkdir /var/lib/jenkins/.kube
-copy config file under .kube directory with jenkins ownership
+mkdir /var/lib/jenkins/.kube  #copy config file under .kube directory with jenkins ownership
+chmod 600 /var/lib/jenkins/.kube/config
 ```
 
 ## Test with helm command
