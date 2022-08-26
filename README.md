@@ -1,3 +1,4 @@
+
 $$
 \Huge EKS ~CI/CD ~Pipeline
 $$
@@ -36,7 +37,7 @@ $$
 	* [Stable HELM Charts](https://github.com/devops-parth/EKS/blob/master/6_HELM_Commands.MD)
 	> The deployed HELM chart works because we have copied the config file from .kube of Kubernetes and pasted in Jenkins Server. Also we have given IAM role to communicate with EC2 to Jenkins Server
 	* [Stable HELM Charts](https://github.com/devops-parth/EKS/blob/master/6_HELM_Commands.MD)
-	* [Create Custom Helm Chart](https://github.com/devops-parth/EKS/blob/master/7_HELM_CustomChart.MD)
+	* [Create Custom Helm Chart for CD Pipeline](https://github.com/devops-parth/EKS/blob/master/7_HELM_CustomChart.MD)
 		* [Helm Files & Jenkinsfile](https://github.com/devops-parth/EKS/tree/master/8_HelmFiles_Jenkinsfile)
 	> Create Custom Chart and use ///Edit Pending
 	
@@ -62,3 +63,26 @@ $$
 
  9. Goto Jenkins: Create New Item >> Pipeline Job >> Pipeline script from SCM >> GIT >> Provide Jenkinsfile Path & Git Link
 	 *  [Jenkinsfile, Dockerfile & POM.xml](https://github.com/devops-parth/EKS/tree/master/9_Jenkins%26Maven)
+
+$$
+	\blacklozenge
+	\Large \textcolor{blue}{Second~PIPELINE:~Continuous~Deployment}
+	$$
+
+10. Check the Jenkinsfile & Update the HELM charts according to the need
+	* [Helm Files & Jenkinsfile](https://github.com/devops-parth/EKS/tree/master/8_HelmFiles_Jenkinsfile)
+	* Goto Jenkins: Create New Item >> Pipeline Job >> Pipeline script from SCM >> GIT >> Provide Jenkinsfile Path & Git Link [Helm Files & Jenkinsfile](https://github.com/devops-parth/EKS/tree/master/8_HelmFiles_Jenkinsfile)
+     * Check with:
+     ```sh
+     helm list #Jenkins Server 
+     kubectl get pods #EKS Management Host/Server
+     kubectl get svc #Loadbalancer
+     kubectl get nodes
+     ```
+     * Goto AWS EC2 Dashboard:
+	     * Copy the public ip of any of the 2 Worker Nodes
+	     * Enable the Port 32750 in Security Group (as per NodePort mentioned in the Service.yaml)
+	     * Paste in Browser: ipaddress:32750
+11. $$\textcolor{red}{Delete ~release ~from ~JENKINS ~SERVER}$$
+	* helm uninstall petclinic-app
+	>petclinic-app is the release name we mentioned in Helm command
